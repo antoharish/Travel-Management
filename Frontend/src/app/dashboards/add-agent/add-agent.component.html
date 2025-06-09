@@ -1,0 +1,10 @@
+<h3>Add Travel-Agent</h3>
+<form (ngSubmit)="addAgent()">
+  <input type="text" [(ngModel)]="name" name="name" placeholder="Name" required>
+  <input type="text" [(ngModel)]="username" name="username" placeholder="Username" required>
+  <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required>
+  <input type="password" [(ngModel)]="password" name="password" placeholder="Password" required>
+  <input type="text" [(ngModel)]="contactNumber" name="contactNumber" placeholder="Contact Number" required>
+  <button type="submit" class="btn btn-primary">Add Travel-Agent</button>
+  <button type="button" class="btn btn-link" (click)="close.emit()">Cancel</button>
+</form>

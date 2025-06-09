@@ -1,0 +1,280 @@
+.hotel-details {
+  padding: 1rem 0;
+}
+
+.hotel-description {
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.badge {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border: none;
+  margin-bottom: 2rem;
+}
+
+.card-title {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.form-label {
+  font-weight: 500;
+  color: #495057;
+}
+
+.form-control:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.btn-primary {
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+}
+
+.text-primary {
+  color: #0d6efd !important;
+}
+
+.spinner-border {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .hotel-details .col-md-4 {
+      text-align: left !important;
+      margin-top: 1rem;
+  }
+}
+/* .bg-danger {
+  background-color: red !important;
+  color: white;
+}
+
+.bg-warning {
+  background-color: lightcoral !important;
+  color: white;
+}
+
+.bg-yellow {
+  background-color: rgb(255, 162, 0) !important;
+  color: black;
+}
+
+.bg-light-green {
+  background-color: rgb(87, 194, 16) !important;
+  color: black;
+}
+
+.bg-success {
+  background-color: green !important;
+  color: white;
+} */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.modern-popup {
+background: white;
+border-radius: 16px;
+width: 90%;
+max-width: 600px;
+box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+animation: slideUp 0.3s ease-out;
+overflow: hidden;
+}
+
+.popup-header {
+padding: 1.5rem;
+border-bottom: 1px solid #e5e7eb;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.popup-header h3 {
+margin: 0;
+font-size: 1.5rem;
+font-weight: 600;
+color: #111827;
+}
+
+.close-btn {
+background: none;
+border: none;
+color: #6b7280;
+padding: 0.5rem;
+cursor: pointer;
+transition: color 0.2s;
+}
+
+.close-btn:hover {
+color: #111827;
+}
+
+.popup-body {
+padding: 1.5rem;
+}
+
+.booking-summary {
+display: flex;
+flex-direction: column;
+gap: 1.5rem;
+}
+
+.hotel-info h4 {
+margin: 0 0 1rem 0;
+color: #111827;
+font-weight: 600;
+}
+
+.dates-container {
+display: flex;
+align-items: center;
+justify-content: space-between;
+background: #f3f4f6;
+padding: 1rem;
+border-radius: 12px;
+}
+
+.date-box {
+display: flex;
+flex-direction: column;
+gap: 0.25rem;
+}
+
+.divider {
+color: #6b7280;
+}
+
+.details-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 1rem;
+}
+
+.detail-item {
+display: flex;
+align-items: flex-start;
+gap: 0.75rem;
+padding: 1rem;
+background: #f9fafb;
+border-radius: 8px;
+}
+
+.detail-item i {
+color: #4f46e5;
+}
+
+.special-requests {
+grid-column: 1 / -1;
+}
+
+.price-summary {
+background: #f3f4f6;
+padding: 1.5rem;
+border-radius: 12px;
+margin-top: 1rem;
+}
+
+.price-summary h5 {
+margin: 0 0 1rem 0;
+color: #111827;
+}
+
+.price-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.price {
+font-size: 1.25rem;
+font-weight: 600;
+color: #111827;
+}
+
+.popup-footer {
+padding: 1.5rem;
+border-top: 1px solid #e5e7eb;
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+
+.primary-actions {
+display: flex;
+gap: 0.75rem;
+}
+
+.btn {
+display: inline-flex;
+align-items: center;
+gap: 0.5rem;
+padding: 0.75rem 1.5rem;
+border-radius: 8px;
+font-weight: 500;
+transition: all 0.2s;
+}
+
+.btn i {
+font-size: 1rem;
+}
+
+@keyframes slideUp {
+from {
+  transform: translateY(20px);
+  opacity: 0;
+}
+to {
+  transform: translateY(0);
+  opacity: 1;
+}
+}
+
+@media (max-width: 640px) {
+.modern-popup {
+  width: 95%;
+  margin: 1rem;
+}
+
+.popup-footer {
+  flex-direction: column-reverse;
+  gap: 1rem;
+}
+
+.primary-actions {
+  width: 100%;
+  flex-direction: column;
+}
+
+.btn {
+  width: 100%;
+  justify-content: center;
+}
+}

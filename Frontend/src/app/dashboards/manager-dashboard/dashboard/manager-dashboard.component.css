@@ -1,0 +1,19 @@
+.dashboard-container {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .btn {
+    transition: all 0.3s ease;
+    min-width: 180px;
+  }
+  
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .btn.btn-success {
+    background-color: #28a745;
+    border-color: #28a745;
+  }

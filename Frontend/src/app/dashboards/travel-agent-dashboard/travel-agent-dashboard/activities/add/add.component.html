@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="text-center mt-5">
+    <h2>Add Activity</h2>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card mt-2 p-4 bg-light">
+        <div class="card-body">
+          <form [formGroup]="activityForm" (ngSubmit)="addActivity()">
+            <div class="controls">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="name">Activity Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      class="form-control"
+                      formControlName="name"
+                      placeholder="Enter activity name *"
+                      required
+                    />
+                    <div
+                      *ngIf="activityForm.get('name')?.invalid && activityForm.get('name')?.touched"
+                      class="text-danger"
+                    >
+                      Activity name is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="name">Activity Location *</label>
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  formControlName="location"
+                  placeholder="Enter activity location *"
+                  required
+                />
+                <div
+                  *ngIf="activityForm.get('location')?.invalid && activityForm.get('location')?.touched"
+                  class="text-danger"
+                >
+                  Activity loction is required.
+                </div>
+              </div>
+            
+          
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea
+                      id="description"
+                      class="form-control"
+                      formControlName="description"
+                      placeholder="Enter activity description *"
+                      rows="4"
+                      required
+                    ></textarea>
+                    <div
+                      *ngIf="activityForm.get('description')?.invalid && activityForm.get('description')?.touched"
+                      class="text-danger"
+                    >
+                      Description is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="price">Price *</label>
+                    <input
+                      type="number"
+                      id="price"
+                      class="form-control"
+                      formControlName="price"
+                      placeholder="Enter price *"
+                      required
+                    />
+                    <div
+                      *ngIf="activityForm.get('price')?.invalid && activityForm.get('price')?.touched"
+                      class="text-danger"
+                    >
+                      Price must be greater than 0.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-12 text-center">
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-send pt-2 btn-block"
+                    [disabled]="activityForm.invalid"
+                  >
+                    Add Activity
+                  </button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

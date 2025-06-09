@@ -1,0 +1,12 @@
+.star {
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .star:focus {
+    outline: 2px solid #0d6efd;  /* Using Bootstrap’s primary color for focus */
+    border-radius: 4px;
+  }
+  
+  /* No additional styling is needed since Bootstrap's text-warning is used for star colors */
+  

@@ -1,0 +1,23 @@
+<div class="auth-container">
+  <div class="auth-form">
+    <h2>Sign in to TravelSite</h2>
+    <div *ngIf="errorMessage" class="text-danger mb-2">
+      {{ errorMessage }}
+    </div>
+    <form (ngSubmit)="onLogin()">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="username" name="username" class="form-control" placeholder="Username" required>
+      </div>
+      <div class="input-group">
+        <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Password" required>
+      </div>
+      <button class="btn btn-auth" type="submit">Sign In</button>
+    </form>
+  </div>
+  <div class="auth-side">
+    
+    <h2>First Time? Unlock The World</h2>
+    <p>Create Your Travel Story</p>
+    <a routerLink="/signup" class="btn btn-outline-auth">Sign Up</a>
+  </div>
+</div>

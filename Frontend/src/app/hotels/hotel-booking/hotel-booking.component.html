@@ -1,0 +1,273 @@
+<app-nav-bar></app-nav-bar>
+<div class="container my-4">
+  <!-- Loading Spinner -->
+  @if (isLoading) {
+    <div class="text-center py-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  }
+
+  <!-- Error Message -->
+  @if (errorMessage) {
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ errorMessage }}
+      <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+    </div>
+  }
+
+  @if (hotel) {
+    <!-- Hotel Details Section -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h2 class="card-title">{{ hotel.name }}</h2>
+        <div class="hotel-details">
+          <div class="row">
+            <div class="col-md-8">
+              <p class="mb-2">
+                <i class="fas fa-map-marker-alt me-2"></i>
+                {{ hotel.location }}
+              </p>
+              <div class="d-flex align-items-center mb-3">
+                <span class="badge bg-success me-2">★ {{ averageRating | number:'1.1-1' }}</span>
+              </div>
+              <p class="hotel-description">{{ hotel.description }}</p>
+            </div>
+            <div class="col-md-4 text-end">
+              <h3 class="text-primary mb-0">
+                {{ hotel.pricePerNight | currency:'INR' }}
+                <small class="text-muted">/night</small>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+      <!-- Booking Form Section -->
+      <div class="card mb-4">
+          <div class="card-body">
+              <h3 class="card-title mb-4">Book Your Stay</h3>
+              <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+                  <div class="row g-3">
+                    <div class="col-md-4">
+                      <label class="form-label">Check In</label>
+                      <input type="date" class="form-control" formControlName="checkIn"
+                             [min]="minDate"
+                             (change)="onCheckInChange()"
+                             [class.is-invalid]="bookingForm.get('checkIn')?.invalid && bookingForm.get('checkIn')?.touched">
+                      @if (bookingForm.get('checkIn')?.invalid && bookingForm.get('checkIn')?.touched) {
+                          <div class="invalid-feedback">
+                              {{ getErrorMessage('checkIn') }}
+                          </div>
+                      }
+                    </div>
+                    
+                    <div class="col-md-4">
+                      <label class="form-label">Check Out</label>
+                      <input type="date" class="form-control" formControlName="checkOut" [min]="minCheckoutDate"
+                          [class.is-invalid]="bookingForm.get('checkOut')?.invalid && 
+                                            bookingForm.get('checkOut')?.touched">
+                      @if (bookingForm.get('checkOut')?.invalid && bookingForm.get('checkOut')?.touched) {
+                          <div class="invalid-feedback">
+                              {{ getErrorMessage('checkOut') }}
+                          </div>
+                      }
+                    </div>
+
+                    <div class="col-md-4">
+                      <label class="form-label">Guests/Rooms</label>
+                      <input type="number" class="form-control" formControlName="guestsRooms" min="1"
+                          [class.is-invalid]="bookingForm.get('guestsRooms')?.invalid && 
+                                            bookingForm.get('guestsRooms')?.touched">
+                      @if (bookingForm.get('guestsRooms')?.invalid && bookingForm.get('guestsRooms')?.touched) {
+                          <div class="invalid-feedback">
+                              {{ getErrorMessage('guestsRooms') }}
+                          </div>
+                      }
+                  </div>
+
+                      <div class="col-md-6">
+                          <label class="form-label">First Name</label>
+                          <input type="text" class="form-control" formControlName="firstName"
+                              [class.is-invalid]="bookingForm.get('firstName')?.invalid && 
+                                                bookingForm.get('firstName')?.touched">
+                          @if (bookingForm.get('firstName')?.invalid && bookingForm.get('firstName')?.touched) {
+                              <div class="invalid-feedback">
+                                  {{ getErrorMessage('firstName') }}
+                              </div>
+                          }
+                      </div>
+
+                      <div class="col-md-6">
+                          <label class="form-label">Last Name</label>
+                          <input type="text" class="form-control" formControlName="lastName"
+                              [class.is-invalid]="bookingForm.get('lastName')?.invalid && 
+                                                bookingForm.get('lastName')?.touched">
+                          @if (bookingForm.get('lastName')?.invalid && bookingForm.get('lastName')?.touched) {
+                              <div class="invalid-feedback">
+                                  {{ getErrorMessage('lastName') }}
+                              </div>
+                          }
+                      </div>
+
+                      <div class="col-md-6">
+                          <label class="form-label">Email</label>
+                          <input type="email" class="form-control" formControlName="email"
+                              [class.is-invalid]="bookingForm.get('email')?.invalid && 
+                                                bookingForm.get('email')?.touched">
+                          @if (bookingForm.get('email')?.invalid && bookingForm.get('email')?.touched) {
+                              <div class="invalid-feedback">
+                                  {{ getErrorMessage('email') }}
+                              </div>
+                          }
+                      </div>
+
+                      <div class="col-md-6">
+                          <label class="form-label">Phone</label>
+                          <input type="tel" class="form-control" formControlName="phone"
+                              [class.is-invalid]="bookingForm.get('phone')?.invalid && 
+                                                bookingForm.get('phone')?.touched">
+                          @if (bookingForm.get('phone')?.invalid && bookingForm.get('phone')?.touched) {
+                              <div class="invalid-feedback">
+                                  {{ getErrorMessage('phone') }}
+                              </div>
+                          }
+                      </div>
+
+                      <!-- <div class="col-12">
+                          <label class="form-label">Special Requests</label>
+                          <textarea class="form-control" rows="3" formControlName="specialRequests"></textarea>
+                      </div> -->
+
+                      <div class="col-12 text-end">
+                          <button type="submit" class="btn btn-primary px-5"
+                                  [disabled]="bookingForm.invalid || isLoading">
+                              @if (isLoading) {
+                                  <span class="spinner-border spinner-border-sm me-2"></span>
+                                  Processing...
+                              } @else {
+                                  Confirm Booking
+                              }
+                          </button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+     
+
+    <!-- Confirmation Popup -->
+    <div *ngIf="showConfirmationPopup" class="popup-overlay">
+      <div class="popup modern-popup">
+        <div class="popup-header">
+          <h3>Confirm Your Booking</h3>
+          <button class="close-btn" (click)="closePopup()">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="popup-body">
+          <div class="booking-summary">
+            <!-- Hotel Info -->
+            <div class="hotel-info">
+              <h4>{{ bookingDetails.hotelName }}</h4>
+              <div class="dates-container">
+                <div class="date-box">
+                  <span class="label">Check-in</span>
+                  <span class="date">{{ bookingDetails.checkIn | date:'MMM d, y' }}</span>
+                </div>
+                <div class="divider">
+                  <i class="fas fa-arrow-right"></i>
+                </div>
+                <div class="date-box">
+                  <span class="label">Check-out</span>
+                  <span class="date">{{ bookingDetails.checkOut | date:'MMM d, y' }}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Guest Details -->
+            <div class="details-grid">
+              <div class="detail-item">
+                <i class="fas fa-users"></i>
+                <div>
+                  <span class="label">Rooms: </span>
+                  <span class="value">{{ bookingDetails.guestsRooms }}</span>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <span class="label"></span>
+                  <span class="value">{{ bookingDetails.email }}</span>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <span class="label">Phone</span>
+                  <span class="value">{{ bookingDetails.phone }}</span>
+                </div>
+              </div>
+              @if (bookingDetails.specialRequests) {
+                <div class="detail-item special-requests">
+                  <i class="fas fa-comment-alt"></i>
+                  <div>
+                    <span class="label">Special Requests</span>
+                    <span class="value">{{ bookingDetails.specialRequests }}</span>
+                  </div>
+                </div>
+              }
+            </div>
+
+            <!-- Price Summary -->
+            <div class="price-summary">
+              <h5>Price Summary</h5>
+              <div class="price-row total">
+                <span>Total Amount</span>
+                <span class="price">{{ bookingDetails.totalPrice | currency:'INR' }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup-footer">
+          <button class="btn btn-outline-secondary" (click)="closePopup()">
+            <i class="fas fa-times"></i>
+            Cancel
+          </button>
+          <div class="primary-actions">
+            <button class="btn btn-success" (click)="confirmBooking()">
+              <i class="fas fa-check"></i>
+              Confirm
+            </button>
+            @if (bookingDetails.sessionUrl) {
+              <a [href]="bookingDetails.sessionUrl" 
+                 target="_blank" 
+                 class="btn btn-primary">
+                <i class="fas fa-credit-card"></i>
+                Pay Now
+              </a>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reviews Section -->
+      <div class="card">
+          <div class="card-body">
+              <h3 class="card-title mb-4">Reviews</h3>
+              <app-review-by-hotel [hotelId]="hotelId"
+              (reviewSubmitted)="onReviewSubmitted()"></app-review-by-hotel>
+          </div>
+      </div>
+  } @else {
+      <div class="alert alert-info">
+          Loading hotel details...
+      </div>
+  }
+</div>
+<app-footer/>

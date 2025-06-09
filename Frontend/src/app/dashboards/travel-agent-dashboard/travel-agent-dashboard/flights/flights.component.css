@@ -1,0 +1,254 @@
+/* Container Styling */
+.flights-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa; /* Light background for contrast */
+    padding: 20px; /* Add padding around the container */
+    font-family: 'Arial', sans-serif; /* Clean and modern font */
+}
+
+/* Header Styling */
+h1 {
+    font-weight: bold;
+    font-size: 2.5rem; /* Larger font size for emphasis */
+    color: #343a40; /* Dark gray for contrast */
+    margin-bottom: 30px; /* Add spacing below the header */
+    text-align: center; /* Center-align the header */
+}
+
+/* Button Styling */
+.flights-button {
+    margin: 15px; /* Add spacing between buttons */
+    padding: 12px 25px; /* Adjust padding for better proportions */
+    font-size: 1.1rem; /* Slightly larger text size */
+    font-weight: bold;
+    background-color: #007bff; /* Blue background */
+    border: none;
+    border-radius: 8px; /* Slightly more rounded corners */
+    color: #fff; /* White text */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.flights-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-3px); /* Lift effect on hover */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15); /* Stronger shadow on hover */
+}
+
+/* New Button Styling */
+.button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px; /* Adjusted padding for compact buttons */
+  background-color: #007bff; /* Blue background */
+  border-radius: 9999px; /* Fully rounded corners */
+  color: #ffffff;
+  font-weight: bold;
+  border: 3px solid #ffffff4d; /* Semi-transparent white border */
+  outline: none;
+  overflow: hidden;
+  font-size: 15px;
+  cursor: pointer;
+  text-align: center;
+  margin: 5px; /* Add spacing between buttons */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+  gap: 10px; /* Add spacing between icon and text */
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px; /* Add spacing between icon and text */
+  transition: all 0.3s ease-in-out;
+  vertical-align: middle; /* Align icon with text */
+}
+
+.button:hover {
+  transform: scale(1.05); /* Slight zoom effect on hover */
+  border-color: #fff9; /* Brighter border on hover */
+  background-color: #0056b3; /* Darker blue on hover */
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.button:hover .icon {
+  transform: translateX(4px); /* Move the icon slightly to the right on hover */
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+  60% {
+    left: 100%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Center Alignment */
+.button-container {
+    text-align: center; /* Center the buttons */
+    margin-top: 20px; /* Add spacing above the buttons */
+}
+
+/* Section Layout */
+.flights-section {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for smaller screens */
+    justify-content: center; /* Center-align the buttons */
+    gap: 20px; /* Add spacing between buttons */
+    margin-top: 20px; /* Add spacing above the section */
+}
+
+/* Card Layout for Flights */
+.flights-card {
+    background: #fff;
+    color: #343a40;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flights-card:hover {
+    transform: translateY(-5px); /* Lift effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.flights-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Ensure the image covers the card */
+}
+
+.flights-card-content {
+    padding: 20px;
+    text-align: center;
+}
+
+.flights-card-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #007bff; /* Blue for titles */
+}
+
+.flights-card-content p {
+    font-size: 1rem;
+    color: #6c757d;
+    margin-bottom: 20px;
+}
+
+.flights-card-content .card-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #007bff; /* Blue button */
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.flights-card-content .card-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: translateY(-2px); /* Lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Table Styling */
+.table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+}
+
+.table th {
+  background-color: #007bff; /* Blue header background */
+  color: #fff; /* White text for header */
+  font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f8f9fa; /* Light gray for striped rows */
+}
+
+.table-striped tbody tr:nth-of-type(even) {
+  background-color: #ffffff; /* White for alternate rows */
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table td button {
+  margin: 0 5px; /* Add spacing between action buttons */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem; /* Adjust header size for smaller screens */
+    }
+
+    .flights-button {
+        font-size: 1rem; /* Adjust button text size */
+        padding: 10px 20px; /* Adjust button padding */
+    }
+
+    .flights-card {
+        width: 100%; /* Full width on smaller screens */
+    }
+
+    .flights-section {
+        gap: 15px; /* Reduce spacing between cards */
+    }
+
+    .table th,
+    .table td {
+        font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+    }
+}

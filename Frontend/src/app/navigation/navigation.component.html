@@ -1,0 +1,31 @@
+<nav class="navbar navbar-dark bg-dark mb-4">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">TravelSite</a>
+
+    <div  id="navbarNav">
+      <div class="d-flex align-items-center">
+        <!-- Conditional Rendering Based on Login State -->
+        <ng-container *ngIf="!isLoggedIn; else loggedInTemplate">
+          <a class="btn btn-outline-light me-2" routerLink="/login">Login</a>
+          <a class="btn btn-outline-light me-2" routerLink="/signup">SignUp</a>
+        </ng-container>
+        <ng-template #loggedInTemplate>
+          <div class="d-flex align-items-center">
+            <span class="text-light me-3">Welcome, {{ username }}!</span>
+            <button class="btn btn-outline-light me-2" (click)="toggleProfilePopup()">
+              <i class="fas fa-user me-1"></i> Profile
+            </button>
+            <!-- Profile Popup -->
+            <div class="profile-popup" *ngIf="isProfilePopupVisible">
+              <app-profile></app-profile>
+              <button class="btn-close" (click)="toggleProfilePopup()"></button>
+            </div>
+            <button class="btn btn-outline-light" (click)="logout()">
+              <i class="fas fa-sign-out-alt me-2"></i>Logout
+            </button>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</nav>

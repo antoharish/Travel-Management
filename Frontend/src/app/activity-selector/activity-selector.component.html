@@ -1,0 +1,14 @@
+<div class="activity-selector" [class.visible]="isVisible">
+  <div class="header">
+    <h3>Available Activities</h3>
+    <button class="close-btn" (click)="close()">×</button>
+  </div>
+  <div class="activities">
+    <div *ngFor="let activity of activities" class="card">
+      <h5>{{ activity.name }}</h5>
+      <p>{{ activity.description }}</p>
+      <p><strong>Price:</strong> ₹{{ activity.price }}</p>
+      <button class="btn btn-primary" (click)="addActivity(activity)">Add</button>
+    </div>
+  </div>
+</div>

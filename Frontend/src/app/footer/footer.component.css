@@ -1,0 +1,65 @@
+.footer {
+  background-color: #2a2929; /* Darker background for better contrast */
+  color: #f5f5f5; /* Light text for readability */
+  padding: 40px 0; /* Increase padding for a spacious look */
+}
+
+.footer-logo {
+  max-width: 150px;
+  font-size: 1.8rem; /* Increase font size for better visibility */
+  font-weight: bold;
+  color: #ff5722; /* Highlight logo with a vibrant color */
+}
+
+.footer-heading {
+  font-size: 1.4rem; /* Slightly larger heading */
+  font-weight: bold;
+  margin-bottom: 15px; /* Add more spacing below headings */
+  color: #ffcc00; /* Use a bright color for headings */
+}
+
+.footer-links,
+.footer-address {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li,
+.footer-address li {
+  margin-bottom: 10px; /* Increase spacing between items */
+}
+
+.footer-links a {
+  color: #f5f5f5; /* Light text for links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #ffcc00; /* Highlight links on hover */
+}
+
+.footer-social a {
+  color: #f5f5f5;
+  margin-right: 15px; /* Increase spacing between social icons */
+  font-size: 1.5rem; /* Larger icons for better visibility */
+  transition: color 0.3s ease;
+}
+
+.footer-social a:hover {
+  color: #ff5722; /* Highlight social icons on hover */
+}
+
+.footer-bottom {
+  border-top: 1px solid #444; /* Subtle border for separation */
+  padding-top: 20px; /* Increase padding above the bottom section */
+  font-size: 0.9rem;
+  color: #aaa;
+  text-align: center; /* Center-align the bottom text */
+}
+
+.footer .container {
+  max-width: 1200px; /* Restrict width for better alignment */
+  margin: 0 auto; /* Center the container */
+}

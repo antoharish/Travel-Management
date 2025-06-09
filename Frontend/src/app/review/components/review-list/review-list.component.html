@@ -1,0 +1,35 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Reviews</h2>
+    <a routerLink="/reviews/new" class="btn btn-primary mb-3">Add New Review</a>
+    <table class="table table-striped">
+      <thead class="table-success">
+        <tr>
+          <th>Review ID</th>
+          <th>Hotel</th>
+          <th>UserID</th>
+          <th>UserName</th>
+          <th>Rating</th>
+          <th>Comment</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let review of reviews">
+          <td>{{ review.reviewID }}</td>
+          <td>{{ review.hotel.name }}</td>
+          <td>{{  review.user.userId }}</td>
+          <td>{{ review.user.username || review.user.userId }}</td>
+          <td>{{ review.rating }}</td>
+          <td>{{ review.comment }}</td>
+          <td>
+            <a [routerLink]="['/reviews', review.reviewID]" class="btn btn-sm btn-info text-white me-1">View</a>
+            <a [routerLink]="['/reviews/edit', review.reviewID]" class="btn btn-sm btn-warning me-1">Edit</a>
+            <button (click)="deleteReview(review.reviewID!)" class="btn btn-sm btn-danger">Delete</button>
+          </td>
+        </tr>
+        
+       
+      </tbody>
+    </table>
+  </div>
+  

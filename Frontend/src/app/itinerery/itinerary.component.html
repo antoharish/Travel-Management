@@ -1,0 +1,131 @@
+<app-nav-bar></app-nav-bar>
+<div class="container-fluid p-0">
+  <!-- Top Photo with Package Details -->
+  <div class="photo-container position-relative">
+    <img src="/assets/pexels-david-kanigan-239927285-31977942.jpg" alt="Itinerary Banner" class="img-fluid">
+    <div class="package-details-overlay">
+      <h1 class="package-name">{{ itinerary?.travelPackage?.name }}</h1>
+      <p class="package-info">
+        <strong>Duration:</strong> {{ itinerary?.travelPackage?.noOfDays }} days |
+        <strong>Location:</strong> {{ itinerary?.travelPackage?.location }}
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Hotel and Flight Cards -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Hotel Card -->
+      <div class="card shadow-lg mb-4">
+        <div class="card-body">
+          <h4 class="card-title text-primary">Included Hotel</h4>
+          <p><strong>Name:</strong> {{ itinerary?.travelPackage?.includedHotels[0]?.name }}</p>
+          <p><strong>Location:</strong> {{ itinerary?.travelPackage?.includedHotels[0]?.location }}</p>
+          <p><strong>Price Per Night:</strong> ₹{{ itinerary?.travelPackage?.includedHotels[0]?.pricePerNight }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <!-- Flight Card -->
+      <div class="card shadow-lg mb-4">
+        <div class="card-body">
+          <h4 class="card-title text-primary">Included Flight</h4>
+          <div *ngIf="itinerary?.travelPackage?.includedFlights?.length > 0; else noFlight">
+            <p><strong>Departure:</strong> {{ itinerary?.travelPackage?.includedFlights[0]?.departureCity }}</p>
+            <p><strong>Destination:</strong> {{ itinerary?.travelPackage?.includedFlights[0]?.destinationCity }}</p>
+            <p><strong>Price Per Person:</strong> ₹{{ itinerary?.travelPackage?.includedFlights[0]?.price }}</p>
+          </div>
+          <ng-template #noFlight>
+            <p class="text-danger">You have to arrange your own transportation to the location.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-5 full-Itinerary">
+  <div class="row">
+    <!-- Left Column: Itinerary Details -->
+    <div class="col-md-9">
+      <h2 class="text-center text-primary">Itinerary - {{ itinerary?.travelPackage?.name }}</h2>
+
+      <!-- Itinerary Days -->
+      <div *ngFor="let day of days" class="card shadow-lg my-4">
+        <div class="card-body">
+          <h4 class="card-title text-primary">Day {{ day.day }}</h4>
+
+          <!-- Hotel Details -->
+          <div *ngIf="day.hotel">
+            <p><strong>Hotel:</strong> {{ day.hotel.name }} <strong>Price Per Night:</strong> ₹{{ day.hotel.pricePerNight }}</p>
+          </div>
+
+          <!-- Activities for the Day -->
+          <div>
+            <h5 class="text-secondary">Activities</h5>
+            <ul>
+              <li *ngFor="let activity of day.activities">
+                {{ activity.name }} - ₹{{ activity.price }}
+                <button class="btn btn-danger btn-sm ms-2" (click)="removeActivity(activity.activityId, day.day)">Remove</button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="add-activity-card p-3 my-3 rounded shadow-sm">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <h6 class="mb-1 text-primary">Add Activities to your day</h6>
+                <p class="mb-0 text-muted">Spend the day at leisure or add an activity.</p>
+              </div>
+              <button class="btn btn-link text-primary fw-bold" (click)="openActivitySelector(day.day)">ADD TO DAY</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Column: Payment Card -->
+    <div class="col-md-3">
+      <div class="payment-card mb-4" style="margin-top: 64px; color: white;">
+        <div class="card-body">
+          <h5 class="card-title text-primary">Payment Details</h5>
+          <p class="card-text">
+            <strong>Total Price:</strong> ₹{{ totalPrice }}
+          </p>
+          <h6 class="text-secondary">Customization Details</h6>
+          <ul class="customization-list">
+            <li *ngFor="let activity of customizedActivities">
+              {{ activity.name }} - ₹{{ activity.price }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Proceed to Booking Button -->
+      <div class="text-center">
+        <button class="btn btn-primary px-5 proceed-to-booking-btn" (click)="proceedToBooking()">Proceed to Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activity Selector Panel -->
+  <div class="activity-selector" [class.open]="isActivitySelectorOpen">
+    <div class="activity-selector-header">
+      <h4>Available Activities</h4>
+      <button class="btn btn-danger btn-sm" (click)="closeActivitySelector()">Close</button>
+    </div>
+    <div class="activity-selector-body">
+      <div *ngFor="let activity of availableActivities" class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ activity.name }}</h5>
+          <p class="card-text">{{ activity.description }}</p>
+          <p><strong>Price:</strong> ₹{{ activity.price }}</p>
+          <button class="btn btn-primary btn-sm" (click)="addActivity(activity)">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

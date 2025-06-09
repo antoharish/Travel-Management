@@ -1,0 +1,83 @@
+<div class="container my-4">
+  <h2 class="text-center mb-4">Add Hotels to Package</h2>
+
+  <!-- Search Form -->
+  <form #searchForm="ngForm" (ngSubmit)="onSearch()" class="bg-white p-4 rounded shadow mx-auto" style="max-width: 1100px;">
+    <div class="row align-items-end g-3">
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Where to</label>
+        <input type="text" class="form-control" name="location" [(ngModel)]="location" placeholder="Enter city or location" required>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Check-in</label>
+        <input type="date" class="form-control" name="checkIn" [(ngModel)]="checkIn" required>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Check-out</label>
+        <input type="date" class="form-control" name="checkOut" [(ngModel)]="checkOut" required>
+      </div>
+      <div class="col-md-2">
+        <label class="form-label fw-bold">Guests & Rooms</label>
+        <select class="form-select" name="guestsRooms" [(ngModel)]="guestsRooms" required>
+          <option value="1|1">1 Adult | 1 Room</option>
+          <option value="2|1">2 Adults | 1 Room</option>
+          <option value="2|2">2 Adults | 2 Rooms</option>
+          <option value="4|2">4 Adults | 2 Rooms</option>
+        </select>
+      </div>
+      <div class="col-md-1 d-flex align-items-end">
+        <button type="submit" class="btn btn-warning w-100 py-2" [disabled]="!searchForm.valid">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Available Hotels -->
+  <div class="mt-4">
+    <h3>Available Hotels</h3>
+    <div *ngIf="availableHotels.length > 0; else noHotels">
+      <div class="row">
+        <div *ngFor="let hotelWrapper of availableHotels" class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Hotel Name: {{ hotelWrapper.hotel.name }}</h5>
+              <p class="card-text">Hotel Location: {{ hotelWrapper.hotel.location }}</p>
+              <p class="card-text">Rating: {{ hotelWrapper.hotel.rating }} ★</p>
+              <p class="card-text">Rooms Available: {{ hotelWrapper.hotel.roomsAvailable }}</p>
+              <p class="card-text text-muted">Price: ₹{{ hotelWrapper.hotel.pricePerNight }}</p>
+              <div class="input-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Package ID"
+                  [(ngModel)]="hotelWrapper.packageId"
+                  name="packageId-{{ hotelWrapper.hotel.hotelId }}"
+                />
+                <button class="btn btn-primary" (click)="addToPackage(hotelWrapper)">Add to Package</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noHotels>
+      <div class="alert alert-warning text-center">No hotels found for the specified criteria.</div>
+    </ng-template>
+  </div>
+
+  <!-- Selected Hotels -->
+  <div class="mt-4">
+    <h3>Selected Hotels</h3>
+    <div *ngIf="selectedHotels.length > 0; else noSelectedHotels">
+      <ul class="list-group">
+        <li *ngFor="let hotel of selectedHotels" class="list-group-item d-flex justify-content-between align-items-center">
+          {{ hotel.name }}
+          <button class="btn btn-danger btn-sm" (click)="removeFromPackage(hotel)">Remove</button>
+        </li>
+      </ul>
+      <button class="btn btn-success mt-3" (click)="savePackage()">Save Package</button>
+    </div>
+    <ng-template #noSelectedHotels>
+      <div class="alert alert-info text-center">No hotels selected for the package.</div>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+.form {
+    margin-top: -100px;
+    position: relative; /* Position relative to ensure proper stacking */
+    z-index: 2; /* Higher z-index to appear above the video */
+    margin-top: -100px; /* Adjust the vertical position */
+    background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 20px; /* Add padding for better spacing */
+    border-radius: 10px; /* Rounded corners for a modern look */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+
+.card {
+    
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.btn-warning {
+    color: #fff;
+    background-color: #ff5722;
+    border-color: #ff5722;
+}
+
+.btn-warning:hover {
+    background-color: #f4511e;
+    border-color: #f4511e;
+}

@@ -1,0 +1,14 @@
+<div role="radiogroup" aria-label="Star Rating" class="d-inline-flex align-items-center">
+    <ng-container *ngFor="let star of stars">
+      <span
+        role="radio"
+        tabindex="0"
+        [attr.aria-checked]="star <= rating"
+        (click)="setRating(star)"
+        (keydown)="onKeydown($event, star)"
+        class="star text-warning px-1">
+        <i class="bi" [ngClass]="{'bi-star-fill': star <= rating, 'bi-star': star > rating}" aria-hidden="true"></i>
+      </span>
+    </ng-container>
+  </div>
+  

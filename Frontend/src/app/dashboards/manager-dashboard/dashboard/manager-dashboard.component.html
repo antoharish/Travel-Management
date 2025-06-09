@@ -1,0 +1,36 @@
+<div class="dashboard-container">
+    <app-nav-bar></app-nav-bar>
+  
+    <div class="container">
+      <div class="row mb-4">
+        <div class="col-12">
+          <div class="d-flex justify-content-center gap-3">
+            <button class="btn btn-lg px-4" 
+                    [class.btn-primary]="selectedSection !== 'addHotel'"
+                    [class.btn-success]="selectedSection === 'addHotel'"
+                    (click)="showSection('addHotel')">
+              <i class="fas fa-plus-circle me-2"></i>Add Hotel
+            </button>
+            <button class="btn btn-lg px-4"
+                    [class.btn-primary]="selectedSection !== 'manageHotels'"
+                    [class.btn-success]="selectedSection === 'manageHotels'"
+                    (click)="showSection('manageHotels')">
+              <i class="fas fa-list me-2"></i>Manage Hotels
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-12">
+          <div [ngSwitch]="selectedSection">
+            <app-add-hotel *ngSwitchCase="'addHotel'"></app-add-hotel>
+            <app-manage-hotels *ngSwitchCase="'manageHotels'"></app-manage-hotels>
+            <div *ngSwitchDefault class="text-center py-5">
+              <h3 class="text-muted">Select an option above to get started</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
