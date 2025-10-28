@@ -1,0 +1,67 @@
+<div class="container mt-4">
+    <h2 class="mb-4">Hotel Manager Dashboard</h2>
+  
+    <div class="card shadow">
+      <div class="card-header bg-primary text-white">
+        <h3 class="card-title mb-0">Add New Hotel</h3>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="hotelForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Hotel Name</label>
+              <input type="text" class="form-control" formControlName="name">
+              <div class="text-danger small" 
+                   *ngIf="hotelForm.get('name')?.invalid && hotelForm.get('name')?.touched">
+                Hotel name is required
+              </div>
+            </div>
+  
+            <div class="col-md-6 mb-3">
+              <label class="form-label">Location</label>
+              <input type="text" class="form-control" formControlName="location">
+              <div class="text-danger small" 
+                   *ngIf="hotelForm.get('location')?.invalid && hotelForm.get('location')?.touched">
+                Location is required
+              </div>
+            </div>
+  
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Total Rooms</label>
+              <input type="number" class="form-control" formControlName="roomsAvailable">
+              <div class="text-danger small" 
+                   *ngIf="hotelForm.get('roomsAvailable')?.invalid && hotelForm.get('roomsAvailable')?.touched">
+                Must be greater than 0
+              </div>
+            </div>
+  
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Price per Night (₹)</label>
+              <input type="number" class="form-control" formControlName="pricePerNight">
+              <div class="text-danger small" 
+                   *ngIf="hotelForm.get('pricePerNight')?.invalid && hotelForm.get('pricePerNight')?.touched">
+                Must be greater than 0
+              </div>
+            </div>
+  
+            <div class="col-md-4 mb-3">
+              <label class="form-label">Rating (1-5)</label>
+              <input type="number" class="form-control" 
+                     formControlName="rating" min="1" max="5" step="0.5">
+              <div class="text-danger small" 
+                   *ngIf="hotelForm.get('rating')?.invalid && hotelForm.get('rating')?.touched">
+                Rating must be between 1 and 5
+              </div>
+            </div>
+          </div>
+  
+          <div class="text-end mt-3">
+            <button type="submit" class="btn btn-primary px-4" 
+                    [disabled]="hotelForm.invalid">
+              Add Hotel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

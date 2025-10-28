@@ -1,0 +1,455 @@
+/* General Styling */
+.container {
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin-top: 20px;
+}
+
+.container.mt-5.full-Itinerary {
+  margin-top: -65px; /* Reduce the margin */
+}
+
+/* Reduce the distance between the top image and the hotel/flight cards */
+.container.mt-4 {
+  margin-top: 10px; /* Reduce the margin */
+}
+
+.card.shadow-lg.my-4 {
+  margin-top: 15px; /* Reduce the margin */
+  margin-bottom: 15px; /* Reduce the margin */
+}
+
+.payment-card {
+  margin-top: 20px; /* Reduce the margin */
+}
+
+/* Activity Selector Panel */
+.activity-selector {
+  margin-top: 15px; /* Reduce the margin */
+}
+
+
+.photo-container {
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+  overflow: hidden;
+  position: relative;
+
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the image covers the entire container */
+}
+
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+/* Top Photo Styling */
+.photo-container {
+  text-align: center;
+}
+
+/* Top Photo Styling */
+.photo-container {
+  width: 100%;
+  height: 400px; /* Adjust the height as needed */
+  position: relative;
+  overflow: hidden;
+  margin-top: -25px;
+}
+
+.photo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  margin-bottom: 10px;
+  padding-bottom: 20px; /* Ensures the image covers the entire container */
+}
+
+.package-details-overlay {
+  position: absolute;
+  bottom: 270px;
+  left: 470px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 20px 30px;
+  border-radius: 8px;
+}
+
+.package-details-overlay .package-name {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 2px;
+  
+}
+
+.package-details-overlay .package-info {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+/* Payment Card Styling */
+.payment-card {
+  margin-top: 30px; /* Move the payment card slightly down */
+}
+
+.container.mt-4 .card {
+  margin-top: -270px;
+  background: rgba( 255, 255, 255, 0.15 );
+box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+backdrop-filter: blur( 3px );
+-webkit-backdrop-filter: blur( 3px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+/* Card Styling */
+.card {
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: #fff;
+  border: 1px solid #ddd;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul li span {
+  font-weight: bold;
+  color: #007bff;
+}
+
+/* Button Styling */
+button {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+  color: #fff;
+}
+
+.btn-success:hover {
+  background-color: #1e7e34;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+/* Payment Card Styling */
+/* Payment Card Styling */
+.payment-card {
+  background-color: #ffffff;
+  border: none;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Proceed to Booking Button Styling */
+.proceed-to-booking-btn {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.proceed-to-booking-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #003f7f);
+  transform: scale(1.05);
+}
+
+.payment-card .card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.payment-card .customization-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.payment-card .customization-list li {
+  font-size: 0.9rem;
+  color: #2c2b2b;
+  margin-bottom: 5px;
+}
+
+.payment-card .proceed-btn {
+  background-color: #007bff;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.payment-card .proceed-btn:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+.card.shadow-lg {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title.text-primary {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.card-text strong {
+  font-weight: bold;
+}
+
+/* Proceed to Booking Button */
+.btn-primary {
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  border: none;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Not Logged In Alert */
+.alert {
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.alert-warning {
+  background-color: #fff3cd;
+  border: 1px solid #ffeeba;
+  color: #856404;
+}
+
+.alert-warning button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.alert-warning button:hover {
+  background-color: #0056b3;
+}
+
+/* Itinerary Section Styling */
+.itinerary-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.itinerary-card {
+  background: #fff;
+  border: none;
+}
+
+.itinerary-card .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.itinerary-card .activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.itinerary-card .activity-item {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itinerary-card .remove-btn {
+  background-color: #dc3545;
+  border: none;
+  font-size: 0.8rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.itinerary-card .remove-btn:hover {
+  background-color: #a71d2a;
+  color: #fff;
+}
+
+.itinerary-card .add-activity-btn {
+  background-color: #28a745;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.itinerary-card .add-activity-btn:hover {
+  background-color: #1e7e34;
+  color: #fff;
+}
+
+/* Activities Section */
+.text-secondary {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #6c757d;
+}
+
+.text-danger {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+/* Add Activity to Day Card */
+.add-activity-card {
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: box-shadow 0.3s ease;
+}
+
+.add-activity-card:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-activity-card h6 {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.add-activity-card p {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.add-activity-card button {
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.add-activity-card button:hover {
+  text-decoration: underline;
+}
+
+/* Activity Selector */
+.activity-selector {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+  z-index: 1050;
+}
+
+.activity-selector.open {
+  right: 0;
+}
+
+.activity-selector-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  background-color: #007bff;
+  color: #fff;
+}
+
+.activity-selector-body {
+  padding: 15px;
+}
+
+.activity-selector .card {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

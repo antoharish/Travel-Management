@@ -1,0 +1,19 @@
+<div class="container my-5" *ngIf="review">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white">
+        <h2 class="mb-0">Review Details (ID: {{ review.reviewID }})</h2>
+      </div>
+      <div class="card-body">
+        <p class="mb-2"><strong>Hotel:</strong> {{ review.hotel.name }}</p>
+        <p class="mb-2"><strong>User:</strong> {{ review.user.username || review.user.userId }}</p>
+        <p class="mb-2"><strong>Rating:</strong> {{ review.rating }}</p>
+        <p class="mb-2"><strong>Comment:</strong> {{ review.comment }}</p>
+        <p class="mb-0"><strong>Timestamp:</strong> {{ review.timestamp | date:'medium' }}</p>
+      </div>
+      <div class="card-footer d-flex justify-content-between">
+        <button (click)="goBack()" class="btn btn-secondary">Back</button>
+        <button (click)="editReview()" class="btn btn-warning">Edit</button>
+      </div>
+    </div>
+  </div>
+  

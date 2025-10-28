@@ -1,0 +1,102 @@
+<div class="container my-4">
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()" class="bg-white p-4 rounded shadow mx-auto form" style="max-width: 1100px;">
+    <div class="row align-items-end g-3">
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Where to</label>
+        <input type="text" class="form-control" formControlName="location" placeholder="Enter city or location">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Check-in</label>
+        <input type="date" 
+               class="form-control" 
+               formControlName="checkIn"
+               [min]="minDate"
+               (change)="onCheckInChange()">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Check-out</label>
+        <input type="date" 
+               class="form-control" 
+               formControlName="checkOut"
+               [min]="minCheckoutDate">
+      </div>
+      <div class="col-md-2">
+        <label class="form-label fw-bold">Guests & Rooms</label>
+        <select class="form-select" formControlName="guestsRooms">
+          <option value="1|1">1 Adult | 1 Room</option>
+          <option value="2|1">2 Adults | 1 Room</option>
+          <option value="2|2">2 Adults | 2 Rooms</option>
+          <option value="4|2">4 Adults | 2 Rooms</option>
+        </select>
+      </div>
+      <div class="col-md-1 d-flex align-items-end">
+        <button type="submit" class="btn btn-warning w-100 py-2">
+          Search
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <div class="mt-4">
+    <div *ngIf="filteredHotels !== null; else showAll">
+      <div *ngIf="filteredHotels.length > 0; else noHotels">
+        <div class="row">
+          <div *ngFor="let availability of filteredHotels" class="col-md-4 mb-4">
+            <div class="card hotel-card h-100" (click)="onBookNow(availability.hotel.hotelId)" 
+            [attr.aria-label]="'Book ' + availability.hotel.name">
+              <img src="/assets/hotel-default.jpg" class="card-img-top" alt="Hotel room image">
+              <div class="card-body">
+                <h5 class="card-title text-truncate">{{ availability.hotel.name }}</h5>
+                <p class="card-text text-muted mb-1">
+                  <i class="fas fa-map-marker-alt me-2"></i>{{ availability.hotel.location }}
+                </p>
+                <div class="d-flex align-items-center mb-2">
+                  <span class="badge bg-success me-2">★ {{ getHotelRating(availability.hotel.hotelId) | number:'1.1-1' }}</span>
+                  <span class="text-muted">({{ availability.capacity }} rooms available)</span>
+                </div>
+                <h4 class="text-primary mb-0">
+                  {{ availability.hotel.pricePerNight | currency:'INR' }}
+                  <small class="text-muted">/night</small>
+                </h4>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <ng-template #noHotels>
+        <div class="alert alert-warning text-center">
+          <i class="fas fa-exclamation-triangle me-2"></i>
+          No hotels found for the specified criteria.
+        </div>
+      </ng-template>
+    </div>
+    <ng-template #showAll>
+      <div class="row">
+        <div *ngFor="let hotel of allHotels" class="col-md-4 mb-4">
+          <div class="card hotel-card h-100">
+            <img src = "/assets/hotel-default.jpg" class="card-img-top" alt="{{ hotel.name }}">
+            <div class="card-body">
+              <h5 class="card-title text-truncate">{{ hotel.name }}</h5>
+              <p class="card-text text-muted mb-1">
+                <i class="fas fa-map-marker-alt me-2"></i>{{ hotel.location }}
+              </p>
+              <div class="d-flex align-items-center mb-2">
+                <span class="badge bg-success me-2">★ {{ getHotelRating(hotel.hotelId) | number:'1.1-1' }}</span>
+              </div>
+              <h4 class="text-primary mb-0">
+                {{ hotel.pricePerNight | currency:'INR' }}
+                <small class="text-muted">/night</small>
+              </h4>
+              <button class="btn btn-primary  px-4" 
+                          (click)="onBookNow(hotel.hotelId)"
+                          [attr.aria-label]="'Book ' + hotel.name">
+                    Book Now
+                  </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>

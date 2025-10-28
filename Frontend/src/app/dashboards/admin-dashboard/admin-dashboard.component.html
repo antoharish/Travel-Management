@@ -1,0 +1,15 @@
+<app-nav-bar></app-nav-bar>
+<div class="admin-dashboard-container">
+    <h2>Admin Dashboard</h2>
+    <p>Welcome, Admin! Here you can manage users, hotels, and more.</p>
+    <div class="dashboard-actions">
+      <button class="btn btn-primary" (click)="showForm('manager')">Add Manager</button>
+      <button class="btn btn-secondary" (click)="showForm('agent')">Add Agent</button>
+    </div>
+    <div *ngIf="selectedForm === 'manager'" class="form-wrapper">
+      <app-add-manager (close)="selectedForm = null"></app-add-manager>
+    </div>
+    <div *ngIf="selectedForm === 'agent'" class="form-wrapper">
+      <app-add-agent (close)="selectedForm = null"></app-add-agent>
+    </div>
+  </div>

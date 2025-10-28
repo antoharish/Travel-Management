@@ -1,0 +1,88 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+  <div class="container">
+  <a class="navbar-brand" routerLink="/">Wanderly</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+  <div class="d-flex align-items-center">
+          @if (!isLoggedIn) {
+  <a class="btn btn-outline-light me-2" routerLink="/login">Login</a>
+  <a class="btn btn-outline-light me-2" routerLink="/signup">SignUp</a>
+          } @else {
+  <div class="d-flex align-items-center">
+  <span class="text-light me-3">Welcome, {{ username }}!</span>
+
+ 
+  <button class="btn btn-outline-light me-2" (click)="toggleProfilePopup()">
+    <i class="fas fa-user me-1"></i> Profile
+  </button>
+  
+
+  <div class="profile-popup" *ngIf="isProfilePopupVisible">
+    <app-profile></app-profile>
+    <button class="btn-close" (click)="toggleProfilePopup()"></button>
+  </div>
+
+  <button class="btn btn-outline-light" (click)="logout()">
+  <i class="fas fa-sign-out-alt me-2"></i>Logout
+  </button>
+  </div>
+          }
+  </div>
+  </div>
+  </div>
+  </nav>
+
+
+
+
+<header class="video-header">
+  <video autoplay muted loop class="video-background">
+    <source src="/assets/201423-915387343_small.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="overlay">
+    <div class="container text-center text-white">
+      <h1 class="display-4 fw-bold display">Plan a <span class="highlight">Hassle-free</span> holiday</h1>
+      <p class="lead display">Search for the best destinations, flights, and hotels</p>
+     
+      <div class="d-flex justify-content-center gap-3 mt-4">
+        <button class="btn-12 transparent-btn" 
+                [class.active]="selectedSection === 'flights'"
+                (click)="showSection('flights')">
+          <span><i class="fas fa-plane me-2"></i>Flights</span>
+        </button>
+        <button class="btn-12 transparent-btn" 
+                [class.active]="selectedSection === 'hotels'"
+                (click)="showSection('hotels')">
+          <span><i class="fas fa-hotel me-2"></i>Hotels</span>
+        </button>
+        <button class="btn-12 transparent-btn" 
+                [class.active]="selectedSection === 'packages'"
+                (click)="showSection('packages')">
+          <span><i class="fas fa-suitcase me-2"></i>Packages</span>
+        </button>
+        </div>
+    </div>
+  </div>
+</header>
+
+<main class="container mt-4">
+  
+  <div [ngSwitch]="selectedSection">
+    <app-flights *ngSwitchCase="'flights'"></app-flights>
+    <app-hotels *ngSwitchCase="'hotels'"></app-hotels>
+    <app-package-selector *ngSwitchCase="'packages'"></app-package-selector>
+
+   
+    <div *ngSwitchDefault class="text-center py-5">
+      <h2>Start Your Journey</h2>
+      <p class="lead">Select a category above to begin your travel adventure</p>
+    </div>
+  </div>
+  
+</main>
+<app-footer/>

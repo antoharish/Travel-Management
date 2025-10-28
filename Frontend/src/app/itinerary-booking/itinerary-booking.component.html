@@ -1,0 +1,46 @@
+<div class="container my-4">
+  <h2 class="text-center text-primary">Booking Details</h2>
+
+  <!-- Price Split-Up -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h4 class="card-title">Price Split-Up</h4>
+      <p><strong>Hotel Price:</strong> ₹{{ hotelPrice }}</p>
+      <p><strong>Flight Price:</strong> ₹{{ flightPrice }}</p>
+      <p><strong>Customized Activities Price:</strong> ₹{{ activitiesPrice }}</p>
+      <p><strong>Total Price:</strong> ₹{{ totalPrice }}</p>
+    </div>
+  </div>
+
+  <!-- Booking Form -->
+  <div class="card mb-4">
+    <div class="card-body">
+      <h4 class="card-title">Enter Your Details</h4>
+      <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" formControlName="firstName">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" formControlName="lastName">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Phone</label>
+            <input type="tel" class="form-control" formControlName="phone">
+          </div>
+          <div class="col-12 text-end">
+            <button type="submit" class="btn btn-primary" [disabled]="bookingForm.invalid || isLoading">
+              Proceed to Payment
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="container text-center">
+  <h2 class="text-center my-4">Packages</h2>
+  <div class="button-container">
+    <button class="button" routerLink="add">
+      <i class="fas fa-plus icon"></i> Add Package
+    </button>
+    <button class="button" routerLink="manage">
+      <i class="fas fa-tasks icon"></i> Manage Packages
+    </button>
+      <button class="button" (click)="navigateTo('app-add-hotels-to-package')">
+        <i class="fas fa-plus icon"></i>  Add Hotels to Package
+      </button>
+      <button class="button" (click)="navigateTo('app-add-flight-to-package')">
+        <i class="fas fa-plus icon"></i> Add Flight to Package
+      </button>
+      <button class="button" (click)="navigateTo('app-add-activity-to-package')">
+        <i class="fas fa-plus icon"></i> Add Activity to Package
+      </button>
+  </div>
+  <div class="mt-4">
+    <router-outlet></router-outlet>
+  </div>
+</div>

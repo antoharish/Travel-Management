@@ -1,0 +1,63 @@
+.profile-page {
+  padding: 10px;
+  background-color: #f9f9f9;
+  height: 100vh; /* Full viewport height */
+  width: 100%;
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  /* Enable vertical scrolling if content overflows */
+ 
+}
+
+.profile-container {
+
+  background: linear-gradient(135deg, #e0e7ff 0%, #fff 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.10);
+  padding: 32px 24px;
+  width: 100%; /* Take 60% of the viewport width */
+  height: 100%; /* Full viewport height */
+  overflow-y: auto; /* Enable scrolling inside the container if content overflows */
+  margin: 0 auto; /* Center horizontally */
+}
+
+.change-password-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+form .form-control {
+  width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+button {
+  min-width: 120px;
+  border-radius: 8px;
+}
+
+.btn-success {
+  background-color: #4caf50;
+  border-color: #4caf50;
+  color: #fff;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #fff;
+}
+
+.text-danger {
+  color: #e53935;
+  font-size: 0.9rem;
+  text-align: center;
+}

@@ -1,0 +1,104 @@
+/* filepath: src/app/auth/signup/signup.component.css */
+.auth-container {
+    display: flex;
+    min-height: 80vh;
+    box-shadow: 0 0 20px #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 40px auto;
+    max-width: 800px;
+    background: #fff;
+  }
+  
+  .auth-form, .auth-side {
+    flex: 1;
+    padding: 48px 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .auth-form {
+    background: #fff;
+  }
+  
+  .auth-form h2 {
+    font-weight: 700;
+    margin-bottom: 32px;
+    color: #000;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+  
+  .btn-auth {
+    width: 100%;
+    background: #07460f;
+    color: #fff;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 18px;
+    margin-top: 16px;
+    transition: background 0.2s;
+  }
+  
+  .btn-auth:hover {
+    background: #123517;
+  }
+  
+  .forgot-link {
+    text-align: right;
+    margin-bottom: 10px;
+  }
+  
+  .forgot-link a {
+    color: #fff;
+    text-decoration: underline;
+    font-size: 14px;
+  }
+  
+  .auth-side {
+    background: #fff;
+    color: #123517;
+    align-items: center;
+    text-align: center;
+    background-image: url('/assets/pexels-karolina-2031292-31983296.jpg');
+    background-size: cover; /* Ensure the image covers the entire section */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat;
+  }
+  
+  .auth-side h2 {
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  
+  .auth-side p {
+    margin-bottom: 32px;
+  }
+  
+  .btn-outline-auth {
+    border: 2px solid #fff;
+    color: #fff;
+    background: transparent;
+    padding: 10px 32px;
+    border-radius: 6px;
+    font-size: 16px;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  
+  .btn-outline-auth:hover {
+    background: #fff;
+    color: #123517;
+  }

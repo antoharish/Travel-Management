@@ -1,0 +1,185 @@
+<div class="reviews-container">
+    <!-- Reviews Summary Section -->
+    <div class="reviews-header">
+      <h3>Customer Reviews</h3>
+      <div class="rating-summary">
+        <div class="average-rating">
+          <div class="rating-number">{{ reviewStats.averageRating | number:'1.1-1' }}</div>
+          <app-star-rating 
+            [rating]="reviewStats.averageRating"
+            [maxRating]="5"
+            [isReadOnly]="true">
+          </app-star-rating>
+          <div class="rating-count">Based on {{ reviewStats.totalReviews }} reviews</div>
+        </div>
+  
+        <!-- Rating Distribution -->
+        <div class="rating-distribution">
+          @for (rating of [5,4,3,2,1]; track rating) {
+            <div class="rating-bar" 
+                 (click)="filterByRating(rating)"
+                 [class.active]="filterRating === rating">
+              <span class="rating-label">{{ rating }} stars</span>
+              <div class="progress">
+                <div class="progress-bar" 
+                     [style.width.%]="getRatingPercentage(rating)"
+                     [class.bg-warning]="filterRating === rating">
+                </div>
+              </div>
+              <span class="rating-count">
+                {{ reviewStats.ratingDistribution.get(rating) || 0 }}
+              </span>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  
+    <!-- Alert Messages -->
+    @if (errorMessage) {
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{ errorMessage }}
+        <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+      </div>
+    }
+  
+    @if (successMessage) {
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ successMessage }}
+        <button type="button" class="btn-close" (click)="successMessage = ''"></button>
+      </div>
+    }
+  
+    <!-- Review Form -->
+    <div class="review-form-container">
+      <h4 *ngIf="!userReview">Write a Review</h4>
+      <h4 *ngIf="userReview">Edit Your Review</h4>
+      <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label">Rating</label>
+          <app-star-rating 
+            [rating]="reviewForm.get('rating')?.value || 0"
+            [maxRating]="5"
+            [isReadOnly]="false"
+            (ratingChange)="onRatingChange($event)">
+          </app-star-rating>
+          @if (reviewForm.get('rating')?.invalid && reviewForm.get('rating')?.touched) {
+            <div class="text-danger small">
+              {{ getErrorMessage('rating') }}
+            </div>
+          }
+        </div>
+  
+        <div class="mb-3">
+          <label class="form-label">Your Review</label>
+          <textarea 
+            class="form-control" 
+            rows="4" 
+            formControlName="comment"
+            [class.is-invalid]="reviewForm.get('comment')?.invalid && reviewForm.get('comment')?.touched"
+            placeholder="Share your experience...">
+          </textarea>
+          @if (reviewForm.get('comment')?.invalid && reviewForm.get('comment')?.touched) {
+            <div class="invalid-feedback">
+              {{ getErrorMessage('comment') }}
+            </div>
+          }
+        </div>
+  
+        <!-- Conditional Buttons -->
+        <div *ngIf="!userReview">
+          <button 
+            type="submit" 
+            class="btn btn-primary"
+            [disabled]="reviewForm.invalid || isSubmitting">
+            @if (isSubmitting) {
+              <span class="spinner-border spinner-border-sm me-2"></span>
+              Submitting...
+            } @else {
+              Submit Review
+            }
+          </button>
+        </div>
+  
+        <div *ngIf="userReview" class="d-flex gap-2">
+          <button 
+            type="submit" 
+            class="btn btn-primary"
+            [disabled]="reviewForm.invalid || isSubmitting">
+            <span *ngIf="isSubmitting" class="spinner-border spinner-border-sm me-2"></span>
+            Update Review
+          </button>
+          <button 
+            type="button" 
+            class="btn btn-danger"
+            (click)="onDelete()"
+            [disabled]="isSubmitting">
+            Delete Review
+          </button>
+        </div>
+      </form>
+    </div>
+  
+    <!-- Reviews List -->
+    <div class="reviews-list mt-4">
+      <!-- Sort Controls -->
+      <div class="sort-controls mb-3">
+        <div class="btn-group">
+          <button 
+            class="btn" 
+            [class.btn-primary]="sortOrder === 'newest'"
+            [class.btn-outline-primary]="sortOrder !== 'newest'"
+            (click)="sortOrder = 'newest'; applyFiltersAndSort()">
+            Newest
+          </button>
+          <button 
+            class="btn"
+            [class.btn-primary]="sortOrder === 'highest'"
+            [class.btn-outline-primary]="sortOrder !== 'highest'"
+            (click)="sortOrder = 'highest'; applyFiltersAndSort()">
+            Highest Rated
+          </button>
+          <button 
+            class="btn"
+            [class.btn-primary]="sortOrder === 'lowest'"
+            [class.btn-outline-primary]="sortOrder !== 'lowest'"
+            (click)="sortOrder = 'lowest'; applyFiltersAndSort()">
+            Lowest Rated
+          </button>
+        </div>
+        @if (filterRating) {
+          <button class="btn btn-outline-secondary ms-2" (click)="filterByRating(null)">
+            Clear Filter
+          </button>
+        }
+      </div>
+  
+      <!-- Reviews Grid -->
+      @if (filteredReviews.length) {
+        <div class="reviews-grid">
+          @for (review of filteredReviews; track review.reviewID) {
+            <div class="review-card">
+              <div class="review-header">
+                <app-star-rating 
+                  [rating]="review.rating"
+                  [maxRating]="5"
+                  [isReadOnly]="true">
+                </app-star-rating>
+                <div class="review-meta">
+                  <strong>{{ review.user.username || 'Anonymous' }}</strong>
+                  <small class="text-muted d-block">
+                    {{ review.timestamp | date:'medium' }}
+                  </small>
+                </div>
+              </div>
+              <div class="review-content">{{ review.comment }}</div>
+            </div>
+          }
+        </div>
+      } @else {
+        <div class="text-center py-5">
+          <p class="text-muted mb-0">No reviews yet. Be the first to share your experience!</p>
+        </div>
+      }
+    </div>
+  </div>

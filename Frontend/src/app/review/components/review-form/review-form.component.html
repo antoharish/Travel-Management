@@ -1,0 +1,65 @@
+<!-- <div class="review-form">
+    <h2>{{ isEdit ? 'Edit Review' : 'Add New Review' }}</h2>
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="hotelId">Hotel ID:</label>
+        <input id="hotelId" type="number" formControlName="hotelId">
+      </div>
+      <div>
+        <label for="userId">User ID:</label>
+        <input id="userId" type="number" formControlName="userId">
+      </div>
+      <div>
+        <label for="rating">Rating:</label>
+        <input id="rating" type="number" formControlName="rating">
+      </div>
+      <div>
+        <label for="comment">Comment:</label>
+        <textarea id="comment" formControlName="comment"></textarea>
+      </div>
+      <button type="submit">{{ isEdit ? 'Update' : 'Submit' }}</button>
+    </form>
+  </div>
+   -->
+   <div class="container mt-5">
+    <div class="card shadow">
+      <div class="card-header text-center">
+        <h2>{{ isEdit ? 'Edit Review' : 'Add New Review' }}</h2>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="hotelId" class="form-label">Hotel ID:</label>
+            <input id="hotelId" type="number" class="form-control" formControlName="hotelId">
+          </div>
+          <div class="mb-3">
+            <label for="userId" class="form-label">User ID:</label>
+            <input id="userId" type="number" class="form-control" formControlName="userId">
+          </div>
+          <!-- <div class="mb-3">
+            <label for="rating" class="form-label">Rating:</label>
+            <input id="rating" type="number" class="form-control" formControlName="rating">
+          </div> -->
+          <div class="mb-3">
+            <label class="form-label" for="rating">Rating:</label>
+            <!-- Bind the form control rating to the star rating component -->
+            <app-star-rating
+              [rating]="reviewForm.get('rating')?.value"
+              (ratingChange)="reviewForm.get('rating')?.setValue($event)">
+            </app-star-rating>
+          </div>
+          
+          
+          <div class="mb-3">
+            <label for="comment" class="form-label">Comment:</label>
+            <textarea id="comment" class="form-control" rows="4" formControlName="comment"></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-50">
+              {{ isEdit ? 'Update' : 'Submit' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

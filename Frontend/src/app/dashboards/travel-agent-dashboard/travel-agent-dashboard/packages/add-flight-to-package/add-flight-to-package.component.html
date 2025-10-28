@@ -1,0 +1,74 @@
+<div class="container my-4">
+  <h2 class="text-center mb-4">Add Flights to Package</h2>
+
+  <!-- Search Form -->
+  <form #searchForm="ngForm" (ngSubmit)="onSearch()" class="bg-white p-4 rounded shadow mx-auto" style="max-width: 1100px;">
+    <div class="row align-items-end g-3">
+      <div class="col-md-3">
+        <label class="form-label fw-bold">From</label>
+        <input type="text" class="form-control" name="from" [(ngModel)]="from" placeholder="Enter departure city" required>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-bold">To</label>
+        <input type="text" class="form-control" name="to" [(ngModel)]="to" placeholder="Enter destination city" required>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label fw-bold">Departure Date</label>
+        <input type="date" class="form-control" name="departureDate" [(ngModel)]="departureDate" required>
+      </div>
+      <div class="col-md-3 d-flex align-items-end">
+        <button type="submit" class="btn btn-warning w-100 py-2" [disabled]="!searchForm.valid">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Available Flights -->
+  <div class="mt-4">
+    <h3>Available Flights</h3>
+    <div *ngIf="availableFlights.length > 0; else noFlights">
+      <div class="row">
+        <div *ngFor="let flightWrapper of availableFlights" class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <p class="card-text">From: {{ flightWrapper.flight.departureCity }}</p>
+              <p class="card-text">To: {{ flightWrapper.flight.destinationCity }}</p>
+              <p class="card-text">Date: {{ flightWrapper.date }}</p>
+              <p class="card-text text-muted">Price: ₹{{ flightWrapper.flight.price }}</p>
+              <div class="input-group mb-3">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Enter Package ID"
+                  [(ngModel)]="flightWrapper.packageId"
+                  name="packageId-{{ flightWrapper.flight.id }}"
+                />
+                <button class="btn btn-primary" (click)="addToPackage(flightWrapper)">Add to Package</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <ng-template #noFlights>
+      <div class="alert alert-warning text-center">No flights found for the specified criteria.</div>
+    </ng-template>
+  </div>
+
+
+  <!-- Selected Flights -->
+  <div class="mt-4">
+    <h3>Selected Flights</h3>
+    <div *ngIf="selectedFlights.length > 0; else noSelectedFlights">
+      <ul class="list-group">
+        <li *ngFor="let flight of selectedFlights" class="list-group-item d-flex justify-content-between align-items-center">
+          {{ flight.departureCity }} → {{ flight.destinationCity }}
+          <button class="btn btn-danger btn-sm" (click)="removeFromPackage(flight)">Remove</button>
+        </li>
+      </ul>
+      <button class="btn btn-success mt-3" (click)="savePackage()">Save Package</button>
+    </div>
+    <ng-template #noSelectedFlights>
+      <div class="alert alert-info text-center">No flights selected for the package.</div>
+    </ng-template>
+  </div>
+</div>

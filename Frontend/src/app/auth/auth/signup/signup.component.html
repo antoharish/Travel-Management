@@ -1,0 +1,22 @@
+<div class="auth-container">
+  <div class="auth-form">
+    <h2>Create Account</h2>
+    <form (ngSubmit)="onSignup()">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="username" name="username" class="form-control" placeholder="User Name" required>
+      </div>
+      <div class="input-group">
+        <input type="email" [(ngModel)]="email" name="email" class="form-control" placeholder="Email" required>
+      </div>
+      <div class="input-group">
+        <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Password" required>
+      </div>
+      <button class="btn btn-auth" type="submit">Sign Up</button>
+    </form>
+  </div>
+  <div class="auth-side">
+    <h2>Already Packed? <br>Log in</h2>
+    <p>Your Next Adventure Awaits</p>
+    <a routerLink="/login" class="btn btn-outline-auth">Sign In</a>
+  </div>
+</div>

@@ -1,0 +1,323 @@
+/* Use Poppins font for the entire component */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: 'Poppins', sans-serif; /* Apply Poppins font globally */
+}
+.form {
+  margin-top: -200px;
+  position: relative; /* Position relative to ensure proper stacking */
+  z-index: 2; /* Higher z-index to appear above the video */
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  padding: 20px; /* Add padding for better spacing */
+  border-radius: 10px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+input[type="date"] {
+  cursor: pointer; /* Ensures the field looks clickable */
+  padding: 10px; /* Adds padding for better usability */
+  border: 1px solid #ccc; /* Adds a border for clarity */
+  border-radius: 5px; /* Rounds the corners */
+  font-size: 1rem; /* Ensures the text is readable */
+  width: 100%; /* Makes the field take up the full width */
+}
+
+input[type="date"]:focus {
+  outline: none; /* Removes the default outline */
+  border-color: #007bff; /* Highlights the field when focused */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Adds a subtle shadow */
+}
+
+/* Styling for the form */
+form {
+  font-family: 'Poppins', sans-serif;
+}
+
+form .form-label {
+  font-size: 0.9rem;
+  font-weight: 500;
+
+}
+
+form .form-control {
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+  font-size: 0.95rem;
+  
+}
+
+form .form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+form .btn-primary {
+  background-color: #007bff;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+form .btn-primary:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+h3 {
+  font-weight: bold;
+  color: #007bff; /* Primary color for the title */
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 500;
+  color: #495057; /* Darker text for labels */
+}
+
+input.form-control {
+  border-radius: 8px; /* Rounded corners for inputs */
+  border: 1px solid #ced4da; /* Subtle border */
+  padding: 10px; /* Increased padding for better usability */
+  font-size: 16px; /* Larger font size */
+}
+
+button[type="submit"] {
+  background-color: #007bff; /* Primary button color */
+  border: none;
+  font-size: 18px; /* Larger font size for the button */
+  font-weight: bold;
+  padding: 12px; /* Increased padding for better appearance */
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.card {
+  border: none;
+  border-radius: 15px; /* Rounded corners for cards */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow for cards */
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Slight lift on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.card img {
+  height: 200px; /* Adjust height for images */
+  object-fit: cover; /* Ensure the image fits nicely */
+}
+
+.card-title {
+  font-size: 1.5rem; /* Larger font size for card titles */
+  font-weight: 600; /* Semi-bold font weight */
+  color: #000000; /* Primary color */
+}
+
+.card-text {
+  font-size: 1.4rem;
+  font-weight: 600; /* Standard font size for card text */
+  color: #495057; /* Subtle text color */
+}
+
+.text-muted {
+  font-size: 1.5rem; /* Slightly smaller font size for muted text */
+  color: #6c757d; /* Muted gray color */
+}
+
+.text-primary{
+  color: green
+}
+
+button.btn-success {
+  font-size: 1rem; /* Standard font size for the "Book Now" button */
+  font-weight: 500; /* Medium font weight */
+  padding: 10px;
+  border-radius: 5px; /* Rounded corners for the button */
+}
+
+button.btn-success:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Styling for the package search form */
+.package-search-form {
+  background: #fff; /* White background */
+  padding: 20px; /* Add padding for spacing */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+  max-width: 1100px; /* Set maximum width */
+  width: 100%;
+  margin-top: -100px; /* Push the form above the video */
+  z-index: 2; /* Ensure it appears above the background */
+  position: relative; /* Position relative for stacking */
+}
+
+/* Input Styling */
+.package-search-form .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 5px; /* Slightly rounded input fields */
+  font-size: 0.9rem;
+  padding: 10px;
+  height: 45px;
+}
+
+/* Label Styling */
+.package-search-form .form-label {
+  font-size: 0.9rem;
+  color: #333;
+  font-weight: bold;
+}
+
+/* Search Button Styling */
+.search-btn {
+  margin-top: 31px;
+  margin-left: 6px;
+  height: 45px;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 5px;
+  background-color: #ffc107; /* Yellow color */
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.search-btn:hover {
+  background-color: #e0a800; /* Darker yellow on hover */
+  color: #fff;
+}
+
+/* Styling for the package cards */
+.package-card {
+  border: none;
+  border-radius: 15px; /* Rounded corners */
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.package-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+}
+
+.package-card img {
+  height: 200px;
+  object-fit: cover; /* Ensure the image fits nicely */
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #6c757d; /* Muted text color */
+}
+
+.text-primary {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .package-search-form {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .search-btn {
+    font-size: 0.9rem;
+  }
+
+  .package-card img {
+    height: 150px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+
+  .text-primary {
+    font-size: 1rem;
+  }
+}
+
+.carousel-container {
+  overflow: hidden; /* Prevent cards from overflowing */
+  height: 600px; /* Keep the height of the container */
+  width: 1260px; /* Make the carousel span the full width of the screen */
+  position: relative;
+  padding-top: 20px;
+  margin: 0 auto; /* Center the carousel horizontally */
+  transform: translateX(-80px); /* Position relative for proper alignment */
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  height: 4220px; /* Keep the height of the track */
+  transition: transform 0.3s ease-in-out;
+  scroll-behavior: smooth; /* Smooth scrolling */
+  overflow-x: hidden; /* Hide the horizontal scrollbar */
+  white-space: nowrap; /* Prevent wrapping of cards */
+}
+
+.carousel-card {
+  flex: 0 0 auto;
+  width: 300px; /* Keep card width the same */
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.carousel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-card img {
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px 15px 0 0;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.carousel-arrow.left-arrow {
+  left: 10px;
+}
+
+.carousel-arrow.right-arrow {
+  right: 10px;
+}
+
+.carousel-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}

@@ -1,0 +1,127 @@
+<app-nav-bar></app-nav-bar>
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-10">
+      <!-- Loading Spinner -->
+      @if (isLoading) {
+        <div class="text-center py-5">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      }
+
+      <!-- Error Message -->
+      @if (errorMessage) {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{ errorMessage }}
+          <button type="button" class="btn-close" (click)="errorMessage = ''"></button>
+        </div>
+      }
+
+      <!-- Flight Details Section -->
+      @if (flight) {
+        <div class="card shadow-sm mb-4">
+          <div class="card-header bg-primary text-white">
+            <h2 class="mb-0">Flight Details</h2>
+          </div>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6">
+                <p><strong>From:</strong> {{ flight.departureCity }}</p>
+                <p><strong>To:</strong> {{ flight.destinationCity }}</p>
+                <p><strong>Flight Number:</strong> {{ flight.flightNumber }}</p>
+              </div>
+              <div class="col-md-6">
+                <p><strong>Departure Time:</strong> {{ flight.departureTime }}</p>
+                <p><strong>Arrival Time:</strong> {{ flight.arrivalTime }}</p>
+                <p><strong>Price per person:</strong> ₹{{ flight.price }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Booking Form Section -->
+        <div class="card shadow-sm">
+          <div class="card-header bg-secondary text-white">
+            <h3 class="mb-0">Booking Information</h3>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">First Name</label>
+                  <input type="text" class="form-control" formControlName="firstName" placeholder="Enter your first name">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Last Name</label>
+                  <input type="text" class="form-control" formControlName="lastName" placeholder="Enter your last name">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Email</label>
+                  <input type="email" class="form-control" formControlName="email" placeholder="Enter your email">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Phone</label>
+                  <input type="tel" class="form-control" formControlName="phone" placeholder="Enter your phone number">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Departure Date</label>
+                  <input type="date" class="form-control" formControlName="departureDate" [min]="minDate">
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Number of Passengers</label>
+                  <input type="number" class="form-control" formControlName="passengers" min="1" placeholder="Enter number of passengers">
+                </div>
+                <!-- <div class="col-12">
+                  <label class="form-label">Special Requests</label>
+                  <textarea class="form-control" formControlName="specialRequests" rows="3" placeholder="Enter any special requests"></textarea>
+                </div> -->
+                <div class="col-12">
+                  <h4 class="text-end">Total Price: ₹{{ calculateTotalPrice() }}</h4>
+                </div>
+                <div class="col-12 text-end">
+                  <button type="submit" class="btn btn-primary px-4" [disabled]="bookingForm.invalid || isLoading">
+                    Proceed to Payment
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Confirmation Popup -->
+        @if (showConfirmationPopup) {
+          <div class="modal d-block">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                  <h5 class="modal-title">Confirm Flight Booking</h5>
+                  <button type="button" class="btn-close" (click)="closePopup()"></button>
+                </div>
+                <div class="modal-body">
+                  <p><strong>Flight:</strong> {{ flight.flightNumber }}</p>
+                  <p><strong>From:</strong> {{ flight.departureCity }}</p>
+                  <p><strong>To:</strong> {{ flight.destinationCity }}</p>
+                  <p><strong>Date:</strong> {{ bookingDetails.departureDate | date }}</p>
+                  <p><strong>Passengers:</strong> {{ bookingDetails.passengers }}</p>
+                  <p><strong>Total Price:</strong> ₹{{ bookingDetails.totalPrice }}</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" (click)="closePopup()">Cancel</button>
+                  @if (bookingDetails.sessionUrl) {
+                    <a [href]="bookingDetails.sessionUrl" target="_blank" class="btn btn-primary">Pay Now</a>
+                  } @else {
+                    <button type="button" class="btn btn-primary" (click)="confirmBooking()">Confirm & Pay</button>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-backdrop show"></div>
+        }
+      }
+    </div>
+  </div>
+</div>
+<app-footer/>

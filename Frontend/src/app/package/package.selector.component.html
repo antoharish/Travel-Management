@@ -1,0 +1,96 @@
+<form (ngSubmit)="fetchPackages()" class="package-search-form mx-auto">
+  <div class="row align-items-center g-3">
+    <!-- Location Input -->
+    <div class="col-md-3 position-relative">
+      <label for="location" class="form-label fw-bold">Where to</label>
+      <input type="text" id="location" [(ngModel)]="formData.location" name="location" class="form-control" placeholder="Enter city or location" required>
+    </div>
+
+    <!-- Start Date Input -->
+    <div class="col-md-3 position-relative">
+      <label for="startDate" class="form-label fw-bold">Start Date</label>
+      <input type="date" id="startDate" [(ngModel)]="formData.startDate" name="startDate" class="form-control" [min]="today" required>
+    </div>
+
+    <!-- End Date Input -->
+    <div class="col-md-3 position-relative">
+      <label for="endDate" class="form-label fw-bold">End Date</label>
+      <input type="date" id="endDate" [(ngModel)]="formData.endDate" name="endDate" class="form-control" [min]="getMinEndDate()" required>
+    </div>
+
+    <!-- Guests & Rooms Input -->
+    <div class="col-md-3 position-relative d-flex align-items-center">
+      <div class="flex-grow-1 me-2">
+        <label for="people" class="form-label fw-bold">Guests & Rooms</label>
+        <input type="number" id="people" [(ngModel)]="formData.people" name="people" class="form-control" placeholder="No. of People" min="1" required>
+      </div>
+      <!-- Search Button -->
+      <button type="submit" class="btn btn-warning search-btn">
+        Search
+      </button>
+    </div>
+  </div>
+</form>
+
+<!-- Loading Indicator -->
+<div *ngIf="isLoading" class="text-center mt-4">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+
+<!-- Error Message -->
+<div *ngIf="errorMessage" class="alert alert-danger mt-4">
+  {{ errorMessage }}
+</div>
+
+<div *ngIf="isLoading && packages.length === 0" class="text-center text-muted No-Package-text">
+  <h4>No packages are available</h4>
+</div>
+
+<!-- Packages Display -->
+<div class="container mt-5">
+  <div class="carousel-container position-relative" style="height: 500px; padding-bottom: 20px;">
+    <!-- Left Arrow -->
+    <button class="carousel-arrow left-arrow" (click)="scrollLeft()">
+      <span>&lt;</span>
+    </button>
+
+    <!-- Carousel Track -->
+    <div class="carousel-track" id="carouselTrack" style="height: 500px;">
+      <div class="carousel-card" *ngFor="let package of packages" style="height: 400px;">
+        <div class="card package-card h-100">
+          <!-- Package Image -->
+          <img src="{{ package.imageUrl || '/assets/pexels-pixabay-221471.jpg' }}" class="card-img-top" alt="Package Image">
+
+          <!-- Card Body -->
+          <div class="card-body">
+            <!-- Package Name -->
+            <h5 class="card-title">{{ package.name }}</h5>
+
+            <!-- Duration and Details -->
+            <p class="card-text text-muted mb-1">
+              {{ package.noOfDays }} Days {{ package.type }}
+            </p>
+            <p class="card-text text-muted mb-3">
+              {{ package.startDate | date:'EEE d/M' }} → {{ package.endDate | date:'EEE d/M' }}
+            </p>
+
+            <!-- Price -->
+            <h5 class="text-primary fw-bold">
+              from ₹{{ package.price | number }}
+            </h5>
+            <button class="btn btn-warning mt-3 w-100" (click)="bookNow(package.packageId)">
+              Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Arrow -->
+    <button class="carousel-arrow right-arrow" (click)="scrollRight()">
+      <span>&gt;</span>
+    </button>
+  </div>
+</div>

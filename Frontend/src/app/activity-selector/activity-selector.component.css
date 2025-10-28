@@ -1,0 +1,62 @@
+.activity-selector {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Initially hidden */
+  width: 400px;
+  height: 100%;
+  background: #f8f9fa;
+  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.activity-selector.visible {
+  right: 0; /* Slide in */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: #007bff;
+  color: white;
+}
+
+.header h3 {
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.activities {
+  padding: 1rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.card h5 {
+  margin: 0 0 0.5rem;
+}
+
+.card p {
+  margin: 0 0 0.5rem;
+}
+
+.card button {
+  width: 100%;
+}

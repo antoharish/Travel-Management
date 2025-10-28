@@ -1,0 +1,95 @@
+/* Optional styling for the hotels page
+.card {
+  transition: transform 0.2s ease-in-out;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.btn-warning {
+  color: #fff;
+  background-color: #ff5722;
+  border-color: #ff5722;
+}
+
+.btn-warning:hover {
+  background-color: #f4511e;
+  border-color: #f4511e;
+  color: #fff;
+}
+
+.badge {
+  font-size: 0.9rem;
+  padding: 0.5em 0.7em;
+}
+
+.text-primary {
+  color: #2196F3 !important;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #ff5722;
+  box-shadow: 0 0 0 0.2rem rgba(255,87,34,0.25);
+} */
+.card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.form {
+  margin-top: -100px;
+  position: relative; /* Position relative to ensure proper stacking */
+  z-index: 2; /* Higher z-index to appear above the video */
+  margin-top: -100px; /* Adjust the vertical position */
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+  padding: 20px; /* Add padding for better spacing */
+  border-radius: 10px; /* Rounded corners for a modern look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Styling for hotel cards */
+.hotel-card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hotel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.hotel-card img {
+  height: 200px;
+  object-fit: cover;
+}
+
+.badge {
+  font-size: 0.85rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .card {
+      margin-bottom: 1rem;
+  }
+}
